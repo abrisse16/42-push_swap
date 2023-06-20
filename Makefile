@@ -14,11 +14,15 @@ NAME	= push_swap
 NAME_BONUS	= checker
 
 CC		= gcc
+
 CFLAGS	= -Wall		\
 		  -Wextra	\
-		  -Werror
+		  -Werror	\
+		  -g
+IFLAGS	= -I./includes/ -I./libft/includes/
 
 SRCS_PATH	= srcs/
+OBJS_PATH	= objs/
 SRCS		= push_swap.c					\
 			  check_and_fix.c				\
 			  operations-push.c				\
@@ -26,45 +30,38 @@ SRCS		= push_swap.c					\
 			  operations-rotate.c			\
 			  operations-swap.c				\
 			  parsing.c						\
-			  print-tool.c					\
 			  sorting.c						\
 			  sorting2.c					\
 			  sorting3.c					\
 			  utils-stack.c					\
 			  utils-stack2.c				\
 			  utils.c
-SRCS_BONUS	= checker.c
-SRCSONLY	= check_and_fix.c				\
+SRCS_BONUS	= checker_bonus.c				\
+			  check_and_fix.c				\
 			  operations-push.c				\
 			  operations-reverse_rotate.c	\
 			  operations-rotate.c			\
 			  operations-swap.c				\
 			  parsing.c						\
-			  print-tool.c					\
 			  sorting.c						\
 			  sorting2.c					\
 			  sorting3.c					\
 			  utils-stack.c					\
 			  utils-stack2.c				\
 			  utils.c
-
-OBJS_PATH	= objs/
 OBJS		= $(addprefix $(OBJS_PATH), $(SRCS:.c=.o))
 OBJS_BONUS	= $(addprefix $(OBJS_PATH), $(SRCS_BONUS:.c=.o))
-OBJSONLY	= $(addprefix $(OBJS_PATH), $(SRCSONLY:.c=.o))
 vpath %.c $(SRCS_PATH)
-
-INC	= -I./includes/ -I./libft/includes/
 
 LIBFT = libft/libft.a
 
 # COMPILATION
 $(NAME): $(LIBFT) $(OBJS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) -o $@ $(OBJS) $(LIBFT)
 	@echo "$(_GREEN)[Push_swap: Executable created]$(_NO_COLOR)"
 
-$(NAME_BONUS)	: $(LIBFT) $(OBJS_BONUS) $(NAME)
-	@$(CC) $(CFLAGS) -o $(NAME_BONUS) $(OBJSONLY) $(OBJS_BONUS) $(LIBFT)
+$(NAME_BONUS)	: $(LIBFT) $(OBJS_BONUS)
+	@$(CC) $(CFLAGS) -o $@ $(OBJS_BONUS) $(LIBFT)
 	@echo "$(_GREEN)[Checker: Executable created]$(_NO_COLOR)"
 
 $(LIBFT):
@@ -73,7 +70,7 @@ $(LIBFT):
 $(OBJS_PATH)%.o : %.c
 	@mkdir -p $(OBJS_PATH)
 	@echo "$(_GREY)Compiling : $<$(_NO_COLOR)"
-	@$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 # RULES
 all	: $(NAME)
