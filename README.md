@@ -53,16 +53,16 @@ We have the following operations at our disposal :
 - `rrb` : reverse rotate <i>B</i> - shift down all elements of stack <i>B</i> by 1. The last element becomes the first one.
 - `rrr` : `rra` and `rrb` at the same time.
 
-### Algorithm
-
-<p align=center>
-	UNDER CONSTRUCTION
-</p>
-
 ### Bonus
 
 The bonus is to write a program named `checker` which will check if the list of instruction given by `push_swap` is valid for the list of integers given as argument.
 
+
+## How it Works : the Algorithm
+
+<p align=center>
+	🚧 UNDER CONSTRUCTION 🚧
+</p>
 
 ## Usage
 
@@ -105,6 +105,7 @@ ARG="<list_of_integers>"; ./push_swap $ARG | ./checker $ARG
 - [Sorting algorithms animations](https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html) (University of San Francisco)
 - [Push_swap Tutorial](https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e) (Medium)
 - [Push_Swap: The least amount of moves with two stacks](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a) (Medium)
+- [Push_swap Tester](https://github.com/louisabricot/push_swap_tester) : test the performance of push_swap program
 
 ---
 <div align=center>
